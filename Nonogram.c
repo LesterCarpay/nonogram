@@ -212,7 +212,7 @@ int *readPuzzle(int n) {
 
 int *readCols(int n) {
 	int *cols = calloc(n*n, sizeof(int));
-	printf("Type in the values of each column seperated by a comma.");
+	printf("Type in the values of each column seperated by a comma.\n");
 	printf("Start at the left.\n");
 	for (int i = 0; i < n; i++) {
 		printf("Column %d:", i + 1);
@@ -220,16 +220,6 @@ int *readCols(int n) {
 	}
 	return cols;
 }
-
-int * transpose(int *matrix, int n) {
-	/*Transposes a square matrix of size n*n*/
-	int *transposed = calloc(n*n, sizeof(int));
-	for (int i = 0; i < n*n; i++) {
-		transposed[i] = matrix[(i%n)*n+i/n];
-	}
-	return transposed;
-}
-	
 
 int main(int argc, char *argv[]) {
 	int n;
