@@ -15,7 +15,7 @@ public class SetCellFinder {
         assert getLeeway() >= 0;
     }
 
-    public void initialiseMargins() {
+    private void initialiseMargins() {
         int size = specification.getBlocks().size();
         this.margins = new int[size];
         margins[0] = 0;
@@ -24,24 +24,38 @@ public class SetCellFinder {
         }
     }
 
-    public Cell[] findNewSetCells() {
+    public Cell[] findSetCells() {
+        Cell[] newSetCells = findNewSetCells();
+        assert newSetCells != null;
+        return addNewSetCells(newSetCells);
+    }
+
+    private Cell[] addNewSetCells(Cell[] newSetCells) {
+        Cell[] result = new Cell[sectionLength];
+        for (int i = 0; i < sectionLength; i++) {
+            result[i] = section[i] == Cell.EMPTY ? newSetCells[i] : section[i];
+        }
+        return result;
+    }
+
+    private Cell[] findNewSetCells() {
         return findNewSetCells(getLeeway(), 0);
     }
 
-    public Cell[] findNewSetCells(int leeway, int marginIndex) {
+    private Cell[] findNewSetCells(int leeway, int marginIndex) {
         if (marginIndex == margins.length || leeway == 0) {
             return makeSectionIfNoConflict();
         }
         Cell[] result = null;
         for (int marginIncrease = 0; marginIncrease <= leeway; marginIncrease++) {
             margins[marginIndex] += marginIncrease;
-            result = cellwiseAnd(result, findNewSetCells(leeway - marginIncrease, marginIndex + 1));
+            result = combineSections(result, findNewSetCells(leeway - marginIncrease, marginIndex + 1));
             margins[marginIndex] -= marginIncrease;
         }
         return result;
     }
 
-    private Cell[] cellwiseAnd(Cell[] section1, Cell[] section2) {
+    private Cell[] combineSections(Cell[] section1, Cell[] section2) {
         if (section1 == null && section2 == null) {
             return null;
         }
@@ -53,12 +67,12 @@ public class SetCellFinder {
         }
         Cell[] result = new Cell[sectionLength];
         for (int i = 0; i < sectionLength; i++) {
-            result[i] = andForCells(section1[i], section2[i]);
+            result[i] = combineCells(section1[i], section2[i]);
         }
         return result;
     }
 
-    private Cell andForCells(Cell cell1, Cell cell2) {
+    private Cell combineCells(Cell cell1, Cell cell2) {
         if (cell1 == cell2) {
             return cell1;
         }

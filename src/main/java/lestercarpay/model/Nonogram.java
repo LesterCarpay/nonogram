@@ -63,6 +63,18 @@ public class Nonogram {
         this.puzzle[row][column] = value;
     }
 
+    public void setRow(int rowNumber, Cell[] values) {
+        for (int i = 0; i < values.length; i++) {
+            puzzle[rowNumber][i] = values[i];
+        }
+    }
+
+    public void setColumn(int columnNumber, Cell[] values) {
+        for (int i = 0; i < values.length; i++) {
+            puzzle[i][columnNumber] = values[i];
+        }
+    }
+
     public Specification getRowSpecification(int row) {
         return rowSpecifications[row];
     }
@@ -75,7 +87,7 @@ public class Nonogram {
         return columnSpecifications[column];
     }
 
-    public void setColumnSpecifications(int column, int... values) {
+    public void setColumnSpecification(int column, int... values) {
         columnSpecifications[column] = new Specification(values);
     }
 

@@ -3,10 +3,7 @@ package lestercarpay;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import lestercarpay.model.Cell;
-import lestercarpay.model.Nonogram;
-import lestercarpay.model.SetCellFinder;
-import lestercarpay.model.Specification;
+import lestercarpay.model.*;
 import org.junit.Test;
 
 
@@ -19,7 +16,7 @@ public class AppTest
         puzzle.setCell(0, 0, Cell.CROSSED);
 
         puzzle.setRowSpecification(1,1,2);
-        puzzle.setColumnSpecifications(2,1,1);
+        puzzle.setColumnSpecification(2,1,1);
 
         return puzzle;
     }
@@ -59,7 +56,7 @@ public class AppTest
 
         SetCellFinder setCellFinder = new SetCellFinder(puzzle.getRow(2), new Specification(1,2));
         Cell[] expectedSetCells = {Cell.EMPTY, Cell.EMPTY, Cell.EMPTY, Cell.FILLED, Cell.EMPTY};
-        assertEquals(expectedSetCells, setCellFinder.findNewSetCells());
+        assertEquals(expectedSetCells, setCellFinder.findSetCells());
     }
 
     @Test
@@ -68,7 +65,7 @@ public class AppTest
 
         SetCellFinder setCellFinder = new SetCellFinder(puzzle.getRow(1), new Specification(1,2));
         Cell[] expectedSetCells = {Cell.FILLED, Cell.CROSSED, Cell.FILLED, Cell.FILLED, Cell.CROSSED};
-        assertEquals(expectedSetCells, setCellFinder.findNewSetCells());
+        assertEquals(expectedSetCells, setCellFinder.findSetCells());
     }
 
     @Test
@@ -77,6 +74,31 @@ public class AppTest
 
         SetCellFinder setCellFinder = new SetCellFinder(puzzle.getRow(0), new Specification(1,2));
         Cell[] expectedSetCells = {Cell.CROSSED, Cell.FILLED, Cell.CROSSED, Cell.FILLED, Cell.FILLED};
-        assertEquals(expectedSetCells, setCellFinder.findNewSetCells());
+        assertEquals(expectedSetCells, setCellFinder.findSetCells());
+    }
+
+    @Test
+    public void testSolver() {
+        Nonogram puzzle = new Nonogram(5,5);
+        puzzle.setRowSpecification(0,5);
+        puzzle.setRowSpecification(1,2,2);
+        puzzle.setRowSpecification(2,1,1);
+        puzzle.setRowSpecification(3,2,2);
+        puzzle.setRowSpecification(4,5);
+
+        puzzle.setColumnSpecification(0,5);
+        puzzle.setColumnSpecification(1,2,2);
+        puzzle.setColumnSpecification(2,1,1);
+        puzzle.setColumnSpecification(3,2,2);
+        puzzle.setColumnSpecification(4,5);
+
+        Solver solver = new Solver(puzzle);
+        solver.improve();
+        String expected = "XXXXX\n" +
+                "XXOXX\n" +
+                "XOOOX\n" +
+                "XXOXX\n" +
+                "XXXXX\n";
+        assertEquals(puzzle.toString(), expected);
     }
 }
