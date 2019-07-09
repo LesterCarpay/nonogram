@@ -30,7 +30,7 @@ public class SetCellFinder {
 
     public Cell[] findNewSetCells(int leeway, int marginIndex) {
         if (marginIndex == margins.length || leeway == 0) {
-            return makeSection();
+            return makeSectionIfNoConflict();
         }
         Cell[] result = null;
         for (int marginIncrease = 0; marginIncrease <= leeway; marginIncrease++) {
@@ -67,6 +67,29 @@ public class SetCellFinder {
 
     private int getLeeway() {
         return sectionLength - specification.getMinimumLength();
+    }
+
+    private Cell[] makeSectionIfNoConflict() {
+        Cell[] candidateSection = makeSection();
+        if (conflictBetweenSections(section, candidateSection)) {
+            return null;
+        }
+        return candidateSection;
+    }
+
+    private static boolean conflictBetweenSections(Cell[] certainSection, Cell[] candidateSection) {
+        for (int i = 0; i < certainSection.length; i++) {
+            if (conflictBetweenCells(certainSection[i], candidateSection[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean conflictBetweenCells(Cell certainCell, Cell candidateCell) {
+        return ((certainCell == Cell.FILLED && candidateCell != Cell.FILLED)
+        ||
+                (certainCell == Cell.CROSSED && candidateCell == Cell.FILLED));
     }
 
     private Cell[] makeSection() {

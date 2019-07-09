@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3350a888-5145-4434-969f-6523572f53a8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lestercarpay/model/SetCellFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lestercarpay/model/Nonogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lestercarpay/model/Nonogram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lestercarpay/model/Specification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lestercarpay/model/Specification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lestercarpay/model/SetCellFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lestercarpay/model/SetCellFinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/lestercarpay/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lestercarpay/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lestercarpay/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lestercarpay/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lestercarpay/model/Nonogram.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lestercarpay/model/Nonogram.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lestercarpay/model/Specification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lestercarpay/model/Specification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lestercarpay/model/setCellFinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lestercarpay/model/setCellFinder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/lestercarpay/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/lestercarpay/AppTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/lestercarpay/model/SetCellFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            <state relative-caret-position="275">
+              <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
               <folding>
                 <element signature="e#701#702#0" expanded="true" />
                 <element signature="e#722#723#0" expanded="true" />
@@ -85,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/lestercarpay/AppTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="57" column="44" lean-forward="true" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+            <state relative-caret-position="323">
+              <caret line="79" column="72" lean-forward="true" selection-start-line="79" selection-start-column="72" selection-end-line="79" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -305,15 +296,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AppTest - 2019.07.09 at 20h 07m 07s.xml">
-      <configuration name="AppTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AppTest - 2019.07.09 at 20h 09m 28s.xml">
-      <configuration name="AppTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AppTest - 2019.07.09 at 20h 11m 18s.xml">
-      <configuration name="AppTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AppTest - 2019.07.09 at 20h 13m 35s.xml">
       <configuration name="AppTest" configurationId="JUnit" />
     </history-entry>
@@ -335,6 +317,15 @@
     <history-entry file="AppTest - 2019.07.09 at 20h 35m 36s.xml">
       <configuration name="AppTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AppTest - 2019.07.09 at 20h 42m 35s.xml">
+      <configuration name="AppTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AppTest - 2019.07.09 at 21h 11m 48s.xml">
+      <configuration name="AppTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AppTest - 2019.07.09 at 21h 12m 20s.xml">
+      <configuration name="AppTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
@@ -345,7 +336,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
@@ -353,7 +344,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.3295129" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2765043" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2765043" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -437,8 +428,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/lestercarpay/AppTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="57" column="44" lean-forward="true" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+        <state relative-caret-position="323">
+          <caret line="79" column="72" lean-forward="true" selection-start-line="79" selection-start-column="72" selection-end-line="79" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -447,8 +438,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/lestercarpay/model/SetCellFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        <state relative-caret-position="275">
+          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
           <folding>
             <element signature="e#701#702#0" expanded="true" />
             <element signature="e#722#723#0" expanded="true" />

@@ -54,11 +54,29 @@ public class AppTest
     }
 
     @Test
-    public void testSetCellFinder() {
+    public void testSetCellFinderForEmptySection() {
+        Nonogram puzzle = buildTestPuzzle();
+
+        SetCellFinder setCellFinder = new SetCellFinder(puzzle.getRow(2), new Specification(1,2));
+        Cell[] expectedSetCells = {Cell.EMPTY, Cell.EMPTY, Cell.EMPTY, Cell.FILLED, Cell.EMPTY};
+        assertEquals(expectedSetCells, setCellFinder.findNewSetCells());
+    }
+
+    @Test
+    public void testSetCellFinderForSectionWithFilledCell() {
         Nonogram puzzle = buildTestPuzzle();
 
         SetCellFinder setCellFinder = new SetCellFinder(puzzle.getRow(1), new Specification(1,2));
-        Cell[] expectedSetCells = {Cell.EMPTY, Cell.EMPTY, Cell.EMPTY, Cell.FILLED, Cell.EMPTY};
+        Cell[] expectedSetCells = {Cell.FILLED, Cell.CROSSED, Cell.FILLED, Cell.FILLED, Cell.CROSSED};
+        assertEquals(expectedSetCells, setCellFinder.findNewSetCells());
+    }
+
+    @Test
+    public void testSetCellFinderForSectionWithCrossedCell() {
+        Nonogram puzzle = buildTestPuzzle();
+
+        SetCellFinder setCellFinder = new SetCellFinder(puzzle.getRow(0), new Specification(1,2));
+        Cell[] expectedSetCells = {Cell.CROSSED, Cell.FILLED, Cell.CROSSED, Cell.FILLED, Cell.FILLED};
         assertEquals(expectedSetCells, setCellFinder.findNewSetCells());
     }
 }
