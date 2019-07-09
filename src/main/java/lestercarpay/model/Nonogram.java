@@ -1,6 +1,8 @@
 package lestercarpay.model;
 
 
+import java.util.List;
+
 public class Nonogram {
     private Cell[][] puzzle;
 
@@ -58,5 +60,29 @@ public class Nonogram {
             return 'X';
         }
         return 'O';
+    }
+
+    public Cell getCell(int row, int column) {
+        return puzzle[row][column];
+    }
+
+    public void setCell(int row, int column, Cell value) {
+        this.puzzle[row][column] = value;
+    }
+
+    public List<Integer> getRowSpecification(int row) {
+        return rowSpecifications[row].getBlocks();
+    }
+
+    public void setRowSpecification(int row, int... values) {
+        rowSpecifications[row] = new Specification(values);
+    }
+
+    public List<Integer> getColumnSpecification(int column) {
+        return columnSpecifications[column].getBlocks();
+    }
+
+    public void setColumnSpecifications(int column, int... values) {
+        columnSpecifications[column] = new Specification(values);
     }
 }

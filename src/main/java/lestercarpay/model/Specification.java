@@ -16,4 +16,8 @@ public class Specification {
     Specification() {
         this(0);
     }
+
+    List<Integer> getBlocks() {
+        return blocks;
+    }
 }
