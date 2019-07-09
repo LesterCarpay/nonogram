@@ -30,4 +30,15 @@ public class Specification {
         minimumLength -= 1;
         return minimumLength;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (int block : getBlocks()) {
+            result.append(block);
+            result.append(' ');
+        }
+        result.deleteCharAt(result.length() - 1);
+        return result.toString();
+    }
 }

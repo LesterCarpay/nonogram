@@ -1,9 +1,9 @@
 package lestercarpay.model;
 
 
-import java.util.List;
+import java.util.Observable;
 
-public class Nonogram {
+public class Nonogram extends Observable {
     private Cell[][] puzzle;
 
     private Specification[] rowSpecifications;
@@ -61,17 +61,19 @@ public class Nonogram {
 
     public void setCell(int row, int column, Cell value) {
         this.puzzle[row][column] = value;
+        setChanged();
+        notifyObservers();
     }
 
     public void setRow(int rowNumber, Cell[] values) {
         for (int i = 0; i < values.length; i++) {
-            puzzle[rowNumber][i] = values[i];
+            setCell(rowNumber, i, values[i]);
         }
     }
 
     public void setColumn(int columnNumber, Cell[] values) {
         for (int i = 0; i < values.length; i++) {
-            puzzle[i][columnNumber] = values[i];
+            setCell(i, columnNumber, values[i]);
         }
     }
 
@@ -81,6 +83,8 @@ public class Nonogram {
 
     public void setRowSpecification(int row, int... values) {
         rowSpecifications[row] = new Specification(values);
+        setChanged();
+        notifyObservers();
     }
 
     public Specification getColumnSpecification(int column) {
@@ -89,6 +93,8 @@ public class Nonogram {
 
     public void setColumnSpecification(int column, int... values) {
         columnSpecifications[column] = new Specification(values);
+        setChanged();
+        notifyObservers();
     }
 
     @Override
