@@ -101,4 +101,13 @@ public class AppTest
                 "XXXXX\n";
         assertEquals(puzzle.toString(), expected);
     }
+
+    @Test
+    public void testSpecificationFromString() {
+        Specification specification = new Specification("1 2 1");
+
+        assertEquals(1 , specification.getBlocks().get(0).intValue());
+        assertEquals(2 , specification.getBlocks().get(1).intValue());
+        assertEquals(1 , specification.getBlocks().get(2).intValue());
+    }
 }

@@ -83,6 +83,14 @@ public class Nonogram extends Observable {
 
     public void setRowSpecification(int row, int... values) {
         rowSpecifications[row] = new Specification(values);
+        initialisePuzzleToEmpty();
+        setChanged();
+        notifyObservers();
+    }
+
+    public void setRowSpecification(int row, Specification specification) {
+        rowSpecifications[row] = specification;
+        initialisePuzzleToEmpty();
         setChanged();
         notifyObservers();
     }
@@ -93,6 +101,14 @@ public class Nonogram extends Observable {
 
     public void setColumnSpecification(int column, int... values) {
         columnSpecifications[column] = new Specification(values);
+        initialisePuzzleToEmpty();
+        setChanged();
+        notifyObservers();
+    }
+
+    public void setColumnSpecification(int column, Specification specification) {
+        columnSpecifications[column] = specification;
+        initialisePuzzleToEmpty();
         setChanged();
         notifyObservers();
     }

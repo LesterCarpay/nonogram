@@ -17,6 +17,14 @@ public class Specification {
         this(0);
     }
 
+    public Specification(String specificationString) {
+        String[] blockStrings = specificationString.split("[^0-9]");
+        this.blocks = new ArrayList<>();
+        for (String blockString : blockStrings) {
+            this.blocks.add(Integer.parseInt(blockString));
+        }
+    }
+
     public List<Integer> getBlocks() {
         return blocks;
     }

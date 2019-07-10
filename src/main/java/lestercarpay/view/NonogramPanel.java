@@ -23,11 +23,10 @@ public class NonogramPanel extends JPanel implements Observer {
 
     @Override
     protected void paintComponent(Graphics g) {
-        setDefaultFontSize(g);
+        g.setFont(new Font(FONT_NAME, FONT_STYLE, getDefaultFontSize(g)));
         super.paintComponent(g);
         paintPuzzleOutline(g);
         paintPuzzle(g);
-        setDefaultFontSize(g);
         paintRowSpecifications(g);
         paintColumnSpecifications(g);
     }
@@ -76,82 +75,86 @@ public class NonogramPanel extends JPanel implements Observer {
     }
 
     private void paintRowSpecification(Graphics g, int row) {
+        g.setFont(new Font(FONT_NAME, FONT_STYLE, getAdjustedFontSizeRowSpecification(g, row)));
         int x = getRowSpecificationX(g, row);
         int y = getRowSpecificationY(g, row);
         String specificationString = puzzle.getRowSpecification(row).toString();
-        setAdjustedFontSizeRowSpecification(g, row);
         g.drawString(specificationString, x, y);
-        setDefaultFontSize(g);
+        g.setFont(new Font(FONT_NAME, FONT_STYLE, getDefaultFontSize(g)));
     }
 
     private void paintColumnSpecification(Graphics g, int column) {
         List<Integer> blocks = puzzle.getColumnSpecification(column).getBlocks();
         int y = getColumnSpecificationFieldY() + getColumnSpecificationFieldHeight();
-        setAdjustedFontSizeColumnSpecification(g, column);
+        g.setFont(new Font(FONT_NAME, FONT_STYLE, getAdjustedFontSizeColumnSpecification(g, column)));
         for (int blockIndex = blocks.size() - 1; blockIndex >= 0; blockIndex--) {
             int block = blocks.get(blockIndex);
             int x = getColumnSpecificationBlockX(g, column, block);
             g.drawString(Integer.toString(block), x, y);
             y -= g.getFontMetrics().getHeight();
         }
-        setDefaultFontSize(g);
+        g.setFont(new Font(FONT_NAME, FONT_STYLE, getDefaultFontSize(g)));
     }
 
-    private void setDefaultFontSize(Graphics g) {
+    private int getDefaultFontSize(Graphics g) {
         int maxHeight = (getCellHeight()*8)/10;
-        int size = 2;
-        Font font = new Font(FONT_NAME, FONT_STYLE, size);
+        int fontSize = 2;
+        Font font = new Font(FONT_NAME, FONT_STYLE, fontSize);
         while (g.getFontMetrics(font).getHeight() < maxHeight) {
-            size++;
-            font = new Font(FONT_NAME, FONT_STYLE, size);
+            fontSize++;
+            font = new Font(FONT_NAME, FONT_STYLE, fontSize);
         }
-        size--;
-        g.setFont(new Font(FONT_NAME, FONT_STYLE, size));
+        fontSize--;
+        return fontSize;
     }
 
-    private void setAdjustedFontSizeRowSpecification(Graphics g, int row) {
+    private int getAdjustedFontSizeRowSpecification(Graphics g, int row) {
         String stringSpecification = puzzle.getRowSpecification(row).toString();
         int maxWidth = getRowSpecificationFieldWidth();
         int fontSize = g.getFont().getSize();
-        while(g.getFontMetrics().stringWidth(stringSpecification) > maxWidth) {
+        Font font = new Font(FONT_NAME, FONT_STYLE, fontSize);
+        while(g.getFontMetrics(font).stringWidth(stringSpecification) > maxWidth) {
             fontSize--;
-            g.setFont(new Font(FONT_NAME, FONT_STYLE, fontSize));
+            font = new Font(FONT_NAME, FONT_STYLE, fontSize);
         }
+        return fontSize;
     }
 
-    private void setAdjustedFontSizeColumnSpecification(Graphics g, int column) {
+    private int getAdjustedFontSizeColumnSpecification(Graphics g, int column) {
         List<Integer> blocks = puzzle.getColumnSpecification(column).getBlocks();
         int maxHeight = getColumnSpecificationFieldHeight();
         int fontSize = g.getFont().getSize();
-        int height = blocks.size()*g.getFontMetrics().getHeight();
+        Font font = g.getFont();
+        int height = blocks.size()*g.getFontMetrics(font).getHeight();
         while (height > maxHeight) {
             fontSize--;
-            g.setFont(new Font(FONT_NAME, FONT_STYLE, fontSize));
-            height = blocks.size()*g.getFontMetrics().getHeight();
+            font = new Font(FONT_NAME, FONT_STYLE, fontSize);
+            height = blocks.size()*g.getFontMetrics(font).getHeight();
         }
+        return fontSize;
     }
 
-    private int getPuzzleFieldWidth() {
+    public int getPuzzleFieldWidth() {
         return (getWidth()*2)/3;
     }
 
-    private int getPuzzleFieldHeight() {
+    public int getPuzzleFieldHeight() {
         return (getHeight()*2)/3;
     }
 
-    private int getPuzzleFieldX() {
+    public int getPuzzleFieldX() {
         return ((getWidth() - getPuzzleFieldWidth())*3)/4;
     }
 
-    private int getPuzzleFieldY() {
+    public int getPuzzleFieldY() {
         return ((getHeight() - getPuzzleFieldHeight())*3)/4;
     }
 
-    private int getCellWidth() {
+    public int getCellWidth() {
         return getPuzzleFieldWidth()/puzzle.getNColumns();
     }
 
-    private int getCellHeight() {
+    public int getCellHeight() {
         return getPuzzleFieldHeight()/puzzle.getNRows();
     }
 
@@ -163,11 +166,11 @@ public class NonogramPanel extends JPanel implements Observer {
         return getPuzzleFieldY() + row*getCellHeight();
     }
 
-    private int getRowSpecificationFieldWidth() {
+    public int getRowSpecificationFieldWidth() {
         return (getPuzzleFieldX()*8)/10;
     }
 
-    private int getRowSpecificationFieldX() {
+    public int getRowSpecificationFieldX() {
         return getPuzzleFieldX()/10;
     }
 
@@ -181,11 +184,11 @@ public class NonogramPanel extends JPanel implements Observer {
         return getCellY(row) + getCellHeight()/2 + g.getFontMetrics().getHeight()/2;
     }
 
-    private int getColumnSpecificationFieldHeight() {
+    public int getColumnSpecificationFieldHeight() {
         return (getPuzzleFieldY()*8)/10;
     }
 
-    private int getColumnSpecificationFieldY() {
+    public int getColumnSpecificationFieldY() {
         return getPuzzleFieldY()/10;
     }
 
