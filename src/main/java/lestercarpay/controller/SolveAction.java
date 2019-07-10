@@ -14,7 +14,7 @@ public class SolveAction extends AbstractAction implements Observer {
     private Solver solver;
     private NonogramPanel panel;
 
-    public SolveAction (Solver solver, Nonogram puzzle, NonogramPanel panel) {
+    SolveAction (Solver solver, Nonogram puzzle, NonogramPanel panel) {
         super("Solve");
         this.solver = solver;
         this.panel = panel;

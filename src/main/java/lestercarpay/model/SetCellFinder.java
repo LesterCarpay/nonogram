@@ -120,16 +120,6 @@ public class SetCellFinder {
         for (;i < sectionLength; i++) {
             result[i] = Cell.CROSSED;
         }
-//        System.out.print("Margins:");
-//        for (int margin : margins) {
-//            System.out.print(margin);
-//        }
-//        System.out.println();
-//        System.out.print("Section:");
-//        for (Cell cell : result) {
-//            System.out.print(cell == Cell.FILLED ? 'X' : 'O');
-//        }
-//        System.out.println();
         return result;
     }
 }

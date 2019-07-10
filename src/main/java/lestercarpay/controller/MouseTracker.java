@@ -11,8 +11,8 @@ import java.awt.event.MouseEvent;
 
 public class MouseTracker extends MouseInputAdapter {
 
-    Nonogram puzzle;
-    NonogramPanel panel;
+    private Nonogram puzzle;
+    private NonogramPanel panel;
 
     public MouseTracker(Nonogram puzzle, NonogramPanel panel) {
         setPuzzle(puzzle);
@@ -21,11 +21,11 @@ public class MouseTracker extends MouseInputAdapter {
         panel.addMouseMotionListener(this);
     }
 
-    public void setPuzzle(Nonogram puzzle) {
+    private void setPuzzle(Nonogram puzzle) {
         this.puzzle = puzzle;
     }
 
-    public void setPanel(NonogramPanel panel) {
+    private void setPanel(NonogramPanel panel) {
         this.panel = panel;
     }
 
@@ -34,6 +34,9 @@ public class MouseTracker extends MouseInputAdapter {
         if (onRowSpecificationField(e.getPoint())) {
             int row = whichRow(e.getPoint());
             String newSpecification = getSpecificationInputFromUser(puzzle.getRowSpecification(row));
+            if (newSpecification == null) {
+                return;
+            }
             try {
                 puzzle.setRowSpecification(row, new Specification(newSpecification));
             } catch (Exception exception) {
@@ -42,7 +45,10 @@ public class MouseTracker extends MouseInputAdapter {
         }
         if (onColumnSpecificationField(e.getPoint())) {
             int column = whichColumn(e.getPoint());
-            String newSpecification = getSpecificationInputFromUser(puzzle.getRowSpecification(column));
+            String newSpecification = getSpecificationInputFromUser(puzzle.getColumnSpecification(column));
+            if (newSpecification == null) {
+                return;
+            }
             try {
                 puzzle.setColumnSpecification(column, new Specification(newSpecification));
             } catch (Exception exception) {
