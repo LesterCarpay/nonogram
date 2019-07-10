@@ -49,8 +49,4 @@ public class Specification {
         result.deleteCharAt(result.length() - 1);
         return result.toString();
     }
-
-    public String toVerticalString() {
-        return toString().replace(' ', '\n');
-    }
 }
