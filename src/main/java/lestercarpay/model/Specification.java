@@ -13,11 +13,11 @@ public class Specification {
         }
     }
 
-    public Specification() {
+    Specification() {
         this(0);
     }
 
-    List<Integer> getBlocks() {
+    public List<Integer> getBlocks() {
         return blocks;
     }
 
@@ -40,5 +40,9 @@ public class Specification {
         }
         result.deleteCharAt(result.length() - 1);
         return result.toString();
+    }
+
+    public String toVerticalString() {
+        return toString().replace(' ', '\n');
     }
 }
